@@ -289,19 +289,19 @@ void main()
 	/*srand(time(NULL));
 	const int coll = 15;
 	MyGeometry::Shape* shape[coll]{};
-	for (int i = 0; i < oll; i++)
+	for (int i = 0; i < coll; i++)
 	{
 		MyGeometry::Shape_Factory::createShape(static_cast<MyGeometry::shapes::Shapes>(rand() % 3));
 	}
 
-	for (int i = 0; i < oll; i++)
+	for (int i = 0; i < coll; i++)
 	{
 		shape[i]->draw();
 		Sleep(500);
 	}*/
 
 	srand(time(NULL));
-	const int coll = 100;
+	const int coll  = 100;
 	MyGeometry::Shape* shape[coll]{};
 	for (int i = 0; i < coll; i++)
 	{
