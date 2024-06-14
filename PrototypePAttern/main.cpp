@@ -76,29 +76,38 @@ enum PlayerType {
 
 class PlayerFactory {
 
-	std::map<PlayerType, Player*>players;
+	static std::map<PlayerType, unique_ptr<Player>>players;
 
-public:
-	PlayerFactory() {
 
-		players[CAR] = new CarPlayer("BMW", 735);
-		players[BIKE] = new BikePlayer("Harley davidson", 200);
+	static void Init() {
+
+		/*players[CAR] = new CarPlayer("BMW", 735);
+		players[BIKE] = new BikePlayer("Harley davidson", 200);*/
+		if(players.find(CAR)==players.end())players[CAR] = make_unique< CarPlayer>(CarPlayer("BMW", 735));
+		if (players.find(BIKE) == players.end())players[BIKE] = make_unique< BikePlayer>(BikePlayer("Harley davidson", 200));
 	}
-	~PlayerFactory()
+public:
+	/*~PlayerFactory()
 	{
 		delete players[CAR];
 		delete players[BIKE];
-	}
+	}*/
 
-	unique_ptr<Player> CreatePlayer(PlayerType type) {
-
+	static unique_ptr<Player> CreatePlayer(PlayerType type) {
+		Init();
 		return players[type]->clone();
 	}
 
 
 };
+
+
+
+	
+
 //#define PROBLEM
-#define SOLUTION
+//#define SOLUTION_1
+#define SOLUTION_2
 void main() {
 
 	setlocale(LC_ALL, "");
@@ -118,7 +127,7 @@ void main() {
 #endif // PROBLEM
 
 	
-#ifdef SOLUTION
+#ifdef SOLUTION_1
 		PlayerFactory factory;
 		cout << delimetr << endl;
 
@@ -134,6 +143,20 @@ void main() {
 
 
 		
-#endif // SOLUTION
+#endif // SOLUTION_1
+
+
+#ifdef SOLUTION_2
+
+
+		cout << delimetr;
+		std::unique_ptr<Player> car_player = PlayerFactory::CreatePlayer(CAR);
+		car_player->print();
+		cout << delimetr; 
+		std::unique_ptr<Player> bike_player = PlayerFactory::CreatePlayer(BIKE);
+
+
+
+#endif // SOLUTION_2
 
 }

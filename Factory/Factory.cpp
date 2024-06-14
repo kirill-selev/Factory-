@@ -2,6 +2,8 @@
 #include<Windows.h>
 #include<iostream>
 #include<ctime>
+
+
 using namespace std;
 
 //#define MIN_SIZE		50
@@ -254,7 +256,33 @@ namespace MyGeometry
 		}
 		return shape;
 	}
+
+
+
+	class NewBilder {
+
+	public:
+
+
+		NewBilder() {}
+		Square* builder_Square() {
+			return new Square(100, 250, 250, 8, RGB(225, 225, 225));
+			
+		}
+		Rectangle* builder_Rectangle() {
+			return new Rectangle (150,75, 60, 250, 8, RGB(225, 225, 225));
+		}
+		Circle* builder_Circle() {
+			return new Circle(100, 250, 250, 8, RGB(225, 225, 225));
+		}
+		~NewBilder() {};
+	};
+
+
+
 }
+
+
 
 //#define USING_ENUM_COLOR
 //#define USING_COLORREF
@@ -300,7 +328,7 @@ void main()
 		Sleep(500);
 	}*/
 
-	srand(time(NULL));
+	/*srand(time(NULL));
 	const int coll  = 100;
 	MyGeometry::Shape* shape[coll]{};
 	for (int i = 0; i < coll; i++)
@@ -314,9 +342,13 @@ void main()
 		Sleep(500);
 	}
 
-	for (int i = 0; i < coll; i++)delete[] shape[i];
-
+	for (int i = 0; i < coll; i++)delete[] shape[i];*/
 	
-
+	MyGeometry::NewBilder bilder1;
+	MyGeometry::Shape* pointer= bilder1.builder_Rectangle();
+	pointer->info();
+	
+	
+	
 	
 }
