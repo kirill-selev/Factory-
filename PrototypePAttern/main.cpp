@@ -106,8 +106,8 @@ public:
 	
 
 //#define PROBLEM
-//#define SOLUTION_1
-#define SOLUTION_2
+//#define SOLUTION_0
+#define SOLUTION_1
 void main() {
 
 	setlocale(LC_ALL, "");
@@ -127,7 +127,7 @@ void main() {
 #endif // PROBLEM
 
 	
-#ifdef SOLUTION_1
+#ifdef SOLUTION_0
 		PlayerFactory factory;
 		cout << delimetr << endl;
 
@@ -143,10 +143,10 @@ void main() {
 
 
 		
-#endif // SOLUTION_1
+#endif // SOLUTION_0
 
 
-#ifdef SOLUTION_2
+#ifdef SOLUTION_1
 
 
 		cout << delimetr;
@@ -157,6 +157,6 @@ void main() {
 
 
 
-#endif // SOLUTION_2
+#endif // SOLUTION_1
 
 }
